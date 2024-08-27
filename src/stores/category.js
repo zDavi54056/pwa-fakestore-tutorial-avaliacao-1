@@ -11,5 +11,15 @@ export const useCategoryStore = defineStore('category', () => {
     categories.value = await categoryService.getCategories()
   }
 
-  return { categories, getCategories }
+  async function createCategory(category) {
+    await categoryService.createCategory(category)
+    getCategories()
+  }
+
+  async function deleteCategory(category_id) {
+    await categoryService.deleteCategory(category_id)
+    getCategories()
+  }
+
+  return { categories, getCategories, createCategory, deleteCategory }
 })

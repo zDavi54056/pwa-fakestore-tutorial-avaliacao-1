@@ -1,40 +1,32 @@
 <script setup>
-// import { onMounted } from "vue";
-// import { PassageUser } from '@passageidentity/passage-elements/passage-user'
+import { onMounted } from 'vue'
+import { PassageUser } from '@passageidentity/passage-elements/passage-user'
+import { useAuthStore } from '@/stores/auth'
 
-// const passageUser = new PassageUser()
+const authStore = useAuthStore()
 
-// import ProductList from '@/components/ProductList.vue';
-import { ref } from 'vue';
-import { useMessagingStore } from '@/stores/messaging'
-const messagingStore = useMessagingStore()
+import ProductList from '@/components/ProductList.vue'
 
-const perm = ref('')
-const refresh = async () => {
-  const permission = await Notification.requestPermission();
-  perm.value = permission
-  if (permission === 'granted') {
-    messagingStore.getToken()
+const getUserInfo = async () => {
+  try {
+    const authToken = localStorage.getItem('psg_auth_token')
+    const passageUser = new PassageUser(authToken)
+    const user = await passageUser.userInfo(authToken)
+    if (user) {
+      await authStore.setToken(authToken)
+    } else {
+      authStore.unsetToken()
+    }
+  } catch (error) {
+    authStore.unsetToken()
   }
 }
 
-// onMounted(async () => {
-//   const user = await passageUser.userInfo()
-//   if (user) {
-//     console.log('User is signed in')
-//     console.log(user)
-//   } else {
-//     console.log('User is signed out')
-//   }
-// })
-
+onMounted(() => {
+  getUserInfo()
+})
 </script>
 
 <template>
-  <p>TOKEN</p>
-  <p>{{ messagingStore.token }}</p>
-  <p>1406 - {{ perm }}</p>
-  <button @click="refresh">Refresh</button>
-  <input autofocus type="text">
   <product-list />
 </template>

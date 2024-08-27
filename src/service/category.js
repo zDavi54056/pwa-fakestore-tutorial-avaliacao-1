@@ -5,4 +5,13 @@ export default class CategoryService {
     const response = await axios.get('/categories/')
     return response.data.results
   }
+
+  async createCategory(category) {
+    const response = await axios.post('/categories/', category)
+    return response.data
+  }
+
+  async deleteCategory(category_id) {
+    await axios.delete(`/categories/${category_id}`)
+  }
 }

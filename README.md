@@ -1,35 +1,18 @@
-# pwa-fakestore-tutorial
+# Avaliação de recuperação - Desenvolvimento para Dispositivos Móveis
 
-This template should help get you started developing with Vue 3 in Vite.
+Esta é uma atividade de recuperação para a disciplina de Desenvolvimento para Dispositivos Móveis.
 
-## Recommended IDE Setup
+Primeiramente, você precisa definir as variáveis PASSAGE_APP_ID e PASSAGE_API_KEY do arquivo docker-compose.yml. Depois, você deve executar o docker, com o seguinte comando:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```bash
+docker compose up --build
 ```
 
-### Compile and Hot-Reload for Development
+Note que já estão desenvolvidas algumas telas, inclusive a http://localhost:5173/categorias, com a inserção e listagem de categorias.
 
-```sh
-npm run dev
-```
+## Tarefas a serem avaliadas:
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+1. Configurar o PASSAGE_APP_ID e PASSAGE_API_KEY para execução do Docker, com os valores da sua aplicação passage
+2. Adicionar um link nos menus das telas pequenas, médias e grandes para acessar a rota das categorias
+3. Embora já esteja implementada a função para excluir categorias, o ícone de excluir na tabela não está invocando essa função. Fazer essa chamada, de forma que a exclusão de categorias funcione
+4. No backend já tem os endpoints para CRUD de fabricantes (manufacturers). Implementar a entrada no menu e também as telas de frontend de para CRUD de fabricantes, a exemplo das categorias.

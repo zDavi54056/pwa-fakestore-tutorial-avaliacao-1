@@ -16,10 +16,20 @@ const router = createRouter({
           component: HomeView
         },
         {
+          path: '/produtos/adicionar',
+          name: 'ProductAdd',
+          component: () => import('@/views/ProductAdd.vue')
+        },
+        {
           path: '/produtos/categoria/:category_id',
-          name: 'Category',
-          component: () => import('@/views/CategoryView.vue'),
+          name: 'ProductsByCategory',
+          component: () => import('@/views/ProductsByCategoryView.vue'),
           props: true
+        },
+        {
+          path: '/categorias',
+          name: 'Category',
+          component: () => import('@/views/CategoryView.vue')
         },
         {
           path: '/login',

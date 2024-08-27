@@ -30,6 +30,11 @@ onMounted(async () => {
 
 <template>
     <div class="product-list">
+        <router-link :to="{ name: 'ProductAdd' }">
+            <button class="icon ">
+                <i class="mdi mdi-plus" />
+            </button>
+        </router-link>
         <div v-if="productStore.products.length === 0">
             <p>Produtos não encontrados!!!</p>
         </div>
@@ -53,10 +58,33 @@ onMounted(async () => {
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 
 <style scoped>
+.icon {
+    background-color: #0a2668;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+
+    position: fixed;
+    bottom: 12rem;
+    right: 20px;
+}
+
+.icon:hover {
+    background-color: #bac9e8;
+    color: #0a2668;
+}
+
+.icon i {
+    font-size: 2rem;
+}
+
 .product-list {
     display: flex;
     flex-wrap: wrap;

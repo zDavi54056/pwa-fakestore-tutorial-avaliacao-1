@@ -1,9 +1,7 @@
 <script setup>
-import ProductList from '@/components/ProductList.vue';
-
-const props = defineProps(['category_id']);
+import CategoryList from '@/components/CategoryList.vue'
 </script>
 
 <template>
-  <product-list :category_id="props.category_id" />
+  <category-list />
 </template>
